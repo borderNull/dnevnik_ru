@@ -1,0 +1,110 @@
+.modal-message {
+    text-align: center;
+    width: 489px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 50px 0;
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.modal__heading {
+    width: 340px;
+    margin: 10px auto;
+    line-height: 45px;
+}
+
+.modal__close {
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-input-block {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.user__input {
+    margin-bottom: 10px;
+}
+
+.photo-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.photo-list-item {
+    margin: 0 10px 10px 0;
+    width: 175px;
+    z-index: 10;
+    &.active {
+        background: rgba(0, 0, 0, .9);
+        position: fixed 0 * * 0;
+        z-index: 9999;
+        text-align: center;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        size: 100%;
+        .previous__slide {
+            position: absolute 43% * * 280px;
+            size: 50px;
+            &:before {
+                left: 27px;
+                content: '\2039';
+            }
+        }
+        .next__slide {
+            position: absolute 43% 280px * *;
+            size: 50px;
+            &:after {
+                right: 25px;
+                content: '\203A';
+            }
+        }
+        .photo-section {
+            width: initial;
+        }
+        .likes-section,
+        .comments-section {
+            background-color: #eee;
+            color: #2a5885;
+            width: 250px;
+        }
+    }
+    .previous__slide:before,
+    .next__slide:after {
+        content: '';
+        width: 6px;
+        position: absolute 10% * * *;
+        transform: scale(8.5);
+        cursor: pointer;
+        color: #fff;
+    }
+}
+
+.photo-section {
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+}
+
+#results {
+    size: 100%;
+}

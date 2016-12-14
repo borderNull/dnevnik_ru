@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <title>TEST DNEVNIK RU</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="user-input-block">
+            <label for="userInput">Введите Id пользователя</label>
+            <input class="user__input form-control" id="userInput" required="" type="text">
+            <button class="btn btn-default btn__show" id="btn__show">Показать</button>
+        </div>
+        <div class="modal-message" id="modalMsg">
+            <h1 class="modal__heading">Пользователь не найден попробуйте еще раз</h1>
+            <button class="btn btn-info modal__close" id="modalClose">Закрыть</button>
+        </div>
+        <div id="results"></div>
+    </div>
+    <script src="assets/js/main.js"></script>
+    <script>
+    function callbackUser(result) {
+
+        if (result.status == 404) {
+            console.log('error try again later');
+        }
+
+        if (result.error) {
+
+            modalMsg.classList.add('active');
+            modalClose.addEventListener('click', function() {
+                this.parentNode.classList.remove('active');
+            });
+
+        } else {
+            let script = document.createElement('script');
+            script.src = 'https://api.vk.com/method/photos.get?owner_id=' + result.response[0].uid + '&album_id=wall&rev=0&extended=1&count=50&v=5.60&callback=callbackPhoto';
+            document.getElementsByTagName("head")[0].appendChild(script);
+        }
+    }
+
+    function callbackPhoto(result) {
+
+        let source = photoListTemplate.innerHTML,
+            templateFn = Handlebars.compile(source),
+            template = templateFn({
+                item: result.response.items
+            });
+        results.innerHTML = template;
+    }
+    </script>
+    <script id="photoListTemplate" type="text/x-handlebars-template">
+        <ul class="photo-list" id="photoList">
+            {{#each item}}
+            <li class="photo-list-item">
+                <span class="previous__slide"></span>
+                <span class="next__slide"></span>
+                <img class="photo-section" src="{{photo_604}}">
+                <div class="likes-section">Лайков {{likes.count}}</div>
+                <div class="comments-section">Комментариев {{comments.count}}</div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+</body>
+
+</html>

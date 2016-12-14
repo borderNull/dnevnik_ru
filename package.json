@@ -1,0 +1,33 @@
+{
+  "name": "dnevnik",
+  "version": "1.0.0",
+  "description": "single page application with modal pictures",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maxim Butin",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "2.11.2",
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-standard": "^2.0.1",
+    "fs": "0.0.1-security",
+    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rev": "^7.1.2",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-nested": "^1.0.0",
+    "postcss-short": "^1.4.0",
+    "rimraf": "2.5.2",
+    "stylelint": "^7.3.1",
+    "stylelint-config-standard": "^15.0.0"
+  },
+  "dependencies": {
+    "normalize.css": "^4.1.1"
+  }
+}
